@@ -5,7 +5,6 @@ import { UserRepository } from '@repositories/user.repository';
 
 @Injectable()
 export class AuthService {
-
   constructor(
     private userRepository: UserRepository,
     private jwtService: JwtService,
@@ -14,13 +13,14 @@ export class AuthService {
   async getUserToLogin(email: string): Promise<IUserLogin | undefined> {
     const user: any = await this.userRepository.findOne({
       select: ['id', 'email', 'password', 'role', 'name'],
-      where: { email }
+      where: { email },
     });
 
     return user;
   }
 
-  login({ password, ...user }: IUserLogin): { token: string } {
+  login(user: IUserLogin): { token: string } {
+    delete user.password;
     return { token: this.jwtService.sign({ ...user }, { expiresIn: '30d' }) };
   }
 }

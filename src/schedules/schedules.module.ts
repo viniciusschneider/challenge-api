@@ -9,6 +9,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     ScheduleModule.forRoot(),
     TypeOrmModule.forFeature([ImageRepository]),
   ],
-  providers: [SchedulesService]
+  providers: [SchedulesService],
 })
 export class SchedulesModule {}

@@ -1,9 +1,9 @@
-import { Check, Column, Entity } from "typeorm";
-import { EntityPattern } from "./patterns/entity.pattern";
+import { Check, Column, Entity } from 'typeorm';
+import { EntityPattern } from './patterns/entity.pattern';
 
 @Check(`"maxHoldingPlayers" >= "minHoldingPlayers"`)
 @Entity({
-  name: 'types_sport'
+  name: 'type_sports',
 })
 export class TypeSportEntity extends EntityPattern {
   @Column()

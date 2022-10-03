@@ -11,10 +11,14 @@ import { TypeSportRepository } from '@repositories/type-sport.repository';
 @Module({
   controllers: [TeamsController],
   imports: [
-    TypeOrmModule.forFeature([TeamRepository, TypeSportRepository, ImageRepository]),
+    TypeOrmModule.forFeature([
+      TeamRepository,
+      TypeSportRepository,
+      ImageRepository,
+    ]),
     IsTypeSportExistsValidatorModule,
     IsImageIdExistsValidatorModule,
   ],
-  providers: [TeamsService]
+  providers: [TeamsService],
 })
 export class TeamsModule {}

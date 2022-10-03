@@ -4,9 +4,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([ImageRepository]),
-  ],
+  imports: [TypeOrmModule.forFeature([ImageRepository])],
   providers: [IsImageIdExistsConstraint],
   exports: [IsImageIdExistsConstraint],
 })

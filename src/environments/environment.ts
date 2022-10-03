@@ -1,5 +1,5 @@
-import { entities } from "@entities";
-import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+import { entities } from '@entities';
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 export const environment = {
   database: {
@@ -12,5 +12,5 @@ export const environment = {
     entities,
     synchronize: true,
   } as TypeOrmModuleOptions,
-  secret: 'test'
+  secret: 'test',
 };

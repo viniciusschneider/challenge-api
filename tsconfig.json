@@ -35,6 +35,7 @@
       "@validators/*": ["src/shared/validators/*"],
       "@common/*": ["src/shared/common/*"],
       "@responses/*": ["src/shared/responses/*"],
+      "@dtos/*": ["src/shared/dtos/*"],
     }
   }
 }

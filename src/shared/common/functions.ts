@@ -1,5 +1,3 @@
-import { app } from "src/main";
-
-export async function getAppUrl() {
-  return `${await app.getUrl()}/`;
+export function getAppUrl() {
+  return `http://127.0.0.1:3000/`;
 }

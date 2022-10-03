@@ -1,11 +1,11 @@
-import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
-import { EntityPattern } from "./patterns/entity.pattern";
-import { EnumTypesEntity } from "@enums";
-import { TypeImageEntity } from "./type-image.entity";
-import { UserEntity } from "./user.entity";
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
+import { EntityPattern } from './patterns/entity.pattern';
+import { EnumTypeEntities } from '@enums';
+import { TypeImageEntity } from './type-image.entity';
+import { UserEntity } from './user.entity';
 
 @Entity({
-  name: 'images'
+  name: 'images',
 })
 export class ImageEntity extends EntityPattern {
   owner: UserEntity;
@@ -23,22 +23,22 @@ export class ImageEntity extends EntityPattern {
   @Column({
     name: 'entity_type',
     type: 'enum',
-    enum: EnumTypesEntity
+    enum: EnumTypeEntities,
   })
-  entityType: EnumTypesEntity;
+  entityType: EnumTypeEntities;
 
-  @ManyToOne(
-    () => TypeImageEntity, typeImage => typeImage.id,
-    { onDelete: 'CASCADE', nullable: false },
-  )
+  @ManyToOne(() => TypeImageEntity, (typeImage) => typeImage.id, {
+    onDelete: 'CASCADE',
+    nullable: false,
+  })
   @JoinColumn({
     name: 'type_image_id',
-    referencedColumnName: 'id'
+    referencedColumnName: 'id',
   })
   typeImage: TypeImageEntity;
 
   @Column({
-    name: 'type_image_id'
+    name: 'type_image_id',
   })
   typeImageId: number;
 }

@@ -4,9 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { TypeSportRepository } from '@repositories/type-sport.repository';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([TypeSportRepository]),
-  ],
+  imports: [TypeOrmModule.forFeature([TypeSportRepository])],
   providers: [IsTypeSportExistsConstraint],
   exports: [IsTypeSportExistsConstraint],
 })

@@ -6,7 +6,11 @@ import { JwtAuthGuard, RolesGuard } from '@guards';
 import { Module } from '@nestjs/common';
 import { SchedulesModule } from './schedules/schedules.module';
 import { TeamsModule } from './controllers/teams/teams.module';
-import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { AddressModule } from './controllers/address/address.module';
+import { MatchesModule } from './controllers/matches/matches.module';
+import { GatewaysModule } from './gateways/gateways.module';
+import { NotificationsModule as NotificationsSharedModule } from './shared/services/notifications/notifications.module';
 
 @Module({
   imports: [
@@ -15,6 +19,10 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
     TeamsModule,
     ImagesModule,
     SchedulesModule,
+    AddressModule,
+    MatchesModule,
+    GatewaysModule,
+    NotificationsSharedModule,
   ],
   providers: [
     {
@@ -25,6 +33,6 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
       provide: APP_GUARD,
       useClass: RolesGuard,
     },
-  ]
+  ],
 })
 export class AppModule {}

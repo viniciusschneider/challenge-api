@@ -1,16 +1,17 @@
-import { Column, Entity, OneToMany } from "typeorm";
-import { EntityPattern } from "./patterns/entity.pattern";
-import { EnumRoles } from "@enums";
-import { Exclude } from "class-transformer";
-import { TeamEntity } from "./team.entity";
-import { ImageEntity } from "./image.entity";
+import { Column, Entity, OneToMany } from 'typeorm';
+import { EntityPattern } from './patterns/entity.pattern';
+import { EnumRoles } from '@enums';
+import { Exclude } from 'class-transformer';
+import { TeamEntity } from './team.entity';
+import { ImageEntity } from './image.entity';
+import { AddressEntity } from './address.entity';
 
 @Entity({
-  name: 'users'
+  name: 'users',
 })
 export class UserEntity extends EntityPattern {
   @Column({
-    unique: true
+    unique: true,
   })
   email: string;
 
@@ -23,13 +24,16 @@ export class UserEntity extends EntityPattern {
 
   @Column({
     type: 'enum',
-    enum: EnumRoles
+    enum: EnumRoles,
   })
   role: string;
 
-  @OneToMany(() => TeamEntity, team => team.user)
+  @OneToMany(() => TeamEntity, (team) => team.user)
   teams: TeamEntity[];
 
-  @OneToMany(() => ImageEntity, image => image.owner)
+  @OneToMany(() => ImageEntity, (image) => image.owner)
   images: ImageEntity[];
+
+  @OneToMany(() => AddressEntity, (address) => address.user)
+  address: AddressEntity[];
 }

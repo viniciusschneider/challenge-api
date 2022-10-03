@@ -1,8 +1,8 @@
-import { Column, Entity } from "typeorm";
-import { EntityPattern } from "./patterns/entity.pattern";
+import { Column, Entity } from 'typeorm';
+import { EntityPattern } from './patterns/entity.pattern';
 
 @Entity({
-  name: 'types_image'
+  name: 'type_images',
 })
 export class TypeImageEntity extends EntityPattern {
   @Column()
