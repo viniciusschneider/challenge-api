@@ -1,5 +1,12 @@
 import { PaginateDto } from '@dtos/paginate.dto';
-import { IsDateString, IsNotEmpty, IsString } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsDateString,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  Min,
+} from 'class-validator';
 
 export class SearchDto extends PaginateDto {
   @IsString()
@@ -13,4 +20,10 @@ export class SearchDto extends PaginateDto {
   @IsDateString()
   @IsNotEmpty()
   endDate: Date;
+
+  @IsNotEmpty()
+  @IsNumber()
+  @Min(1)
+  @Type(() => Number)
+  teamId: number;
 }

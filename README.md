@@ -4,6 +4,14 @@ This project was developed to apply my knowledge after studying NestJs. In it I 
 ## Environment
 Configure the following file with your database connection `src\environments\environment.ts`
 
+## Login
+To log into the application we have two users
+> email: admin@admin.com
+> password: 12345678
+
+> email: player@player.com
+> password: 12345678
+
 ## Front-end project
 ```
 https://github.com/viniciusschneider/challenge-portal

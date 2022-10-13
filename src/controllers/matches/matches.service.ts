@@ -66,10 +66,17 @@ export class MatchesService {
 
   async search(
     userId: number,
-    { address, endDate, limit, page, startDate }: SearchDto,
+    { address, endDate, limit, page, startDate, teamId }: SearchDto,
   ) {
+    const team = await this.teamRepository.findOne({ id: teamId, userId });
+
+    if (!team) throw new BadRequestException(HttpMessages.INVALID_TEAM_ID);
+
     const query = (await this.matchsQuery())
       .where('local_team.user_id != :userId', { userId })
+      .andWhere('local_team.type_sport_id = :typeSportId', {
+        typeSportId: team.typeSportId,
+      })
       .andWhere('match.visiting_team_id IS NULL')
       .andWhere('match.date BETWEEN :startDate AND :endDate', {
         startDate,

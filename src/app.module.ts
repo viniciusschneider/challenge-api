@@ -11,6 +11,7 @@ import { AddressModule } from './controllers/address/address.module';
 import { MatchesModule } from './controllers/matches/matches.module';
 import { GatewaysModule } from './gateways/gateways.module';
 import { NotificationsModule as NotificationsSharedModule } from './shared/services/notifications/notifications.module';
+import { SeederModule } from './seeder/seeder.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { NotificationsModule as NotificationsSharedModule } from './shared/servi
     MatchesModule,
     GatewaysModule,
     NotificationsSharedModule,
+    SeederModule,
   ],
   providers: [
     {
